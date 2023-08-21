@@ -34,6 +34,5 @@ public class PlayerController : MonoBehaviour
         float mouseY = Input.GetAxis("Vertical");
 
         this.transform.Rotate(0, mouseX * mouseSens * Time.deltaTime, mouseY * mouseSens * Time.deltaTime);
-
     }
 }

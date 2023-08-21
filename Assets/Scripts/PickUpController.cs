@@ -53,7 +53,7 @@ public class PickUpController : MonoBehaviour
 
     void PickupObject(GameObject pickObj)
     {
-        if (pickObj.GetComponent<Rigidbody>())
+        if (pickObj.GetComponent<Rigidbody>() && pickObj.tag == "Interactive")
         {
             heldObjRB = pickObj.GetComponent<Rigidbody>();
             heldObjRB.useGravity = false;
