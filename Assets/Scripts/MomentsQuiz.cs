@@ -8,6 +8,8 @@ public class MomentsQuiz : MonoBehaviour
     public TMPro.TMP_Text questionText;
     public Button[] answerButtons;
     public TMPro.TMP_Text feedbackText;
+    public GameObject momentsQuizUI;
+    public static bool GameIsPaused = false;
 
     private string[] questions = {
         "What is the moment of a force?",
@@ -37,6 +39,39 @@ public class MomentsQuiz : MonoBehaviour
     {
         userAnswers = new string[questions.Length];
         ShowQuestion(currentQuestionIndex);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (GameIsPaused)
+            {
+                QuizEnd();
+            }
+
+            else
+            {
+                QuizTime();
+            }
+        }
+    }
+
+    public void QuizEnd()
+    {
+        QuizMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+        Cursor.visible = false;
+    }
+
+    void QuizTime()
+    {
+        QuizMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+        Cursor.visible = true;
     }
 
     public void AnswerSelected(int answerIndex)
