@@ -24,6 +24,12 @@ public class PauseMenu : MonoBehaviour
                 Pause();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            SceneManager.LoadScene(3);
+            Cursor.visible = true;
+        }
     }
 
     public void Resume()
@@ -45,7 +51,7 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Scenes/MainMenu/Menu");
+        SceneManager.LoadScene(0);
     }
 
     public void QuitGame()

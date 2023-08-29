@@ -1,14 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Linq;
 
 public class MomentsQuiz : MonoBehaviour
 {
-    public GameObject QuizMenuUI;
+    public Console console;
+
     public TMPro.TMP_Text questionText;
     public Button[] answerButtons;
     public TMPro.TMP_Text feedbackText;
-    public static bool GameIsPaused = false;
 
     private string[] questions = {
         "What is the moment of a force?",
@@ -31,51 +32,33 @@ public class MomentsQuiz : MonoBehaviour
         /* Add more wrong answer arrays here */
     };
 
-    private string[] userAnswers;
+    private string[] userAnswers; // Store selected answers
     private int currentQuestionIndex = 0;
 
     private void Start()
     {
+        console.log("Showing quiz");
+
         userAnswers = new string[questions.Length];
-        ShowQuestion(currentQuestionIndex);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
+        for (int i = 0; i < userAnswers.Length; i++)
         {
-            if (GameIsPaused)
-            {
-                QuizEnd();
-            }
-
-            else
-            {
-                QuizTime();
-            }
+            userAnswers[i] = ""; // Initialize with empty string
         }
+        ShowQuestion(currentQuestionIndex);
+        console.log("Questions Shown");
     }
 
-    private void QuizEnd()
+    private void Update()
     {
-        QuizMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        GameIsPaused = false;
-        Cursor.visible = false;
-    }
-
-    private void QuizTime()
-    {
-        QuizMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPaused = true;
-        Cursor.visible = true;
+        
     }
 
     public void AnswerSelected(int answerIndex)
     {
+        console.log("Answer clicked");
         string selectedAnswer = answerButtons[answerIndex].GetComponentInChildren<TMPro.TextMeshProUGUI>().text;
+
+        userAnswers[currentQuestionIndex] = selectedAnswer; // Update userAnswers
 
         if (selectedAnswer == correctAnswers[currentQuestionIndex])
         {
@@ -110,21 +93,14 @@ public class MomentsQuiz : MonoBehaviour
     {
         questionText.text = questions[index];
 
+        string[] allAnswers = wrongAnswers[index].Concat(new string[] { correctAnswers[index] }).ToArray();
+        allAnswers = allAnswers.OrderBy(a => Random.value).ToArray(); // Shuffle the answers
+
         for (int i = 0; i < answerButtons.Length; i++)
         {
-            int answerIndex = i; // Store the value of i for the lambda function
-            // answerButtons[i].onClick.RemoveAllListeners(); // Remove any existing listeners
-            // answerButtons[i].onClick.AddListener(() => AnswerSelected(answerIndex)); // Add the listener
-
-            if (i == 0)
-            {
-                answerButtons[i].GetComponentInChildren<TMPro.TextMeshProUGUI>().text = correctAnswers[index];
-            }
-            else
-            {
-                answerButtons[i].GetComponentInChildren<TMPro.TextMeshProUGUI>().text = wrongAnswers[index][i - 1];
-            }
+            answerButtons[i].GetComponentInChildren<TMPro.TextMeshProUGUI>().text = allAnswers[i];
         }
+
         feedbackText.text = "";
     }
 
@@ -141,6 +117,4 @@ public class MomentsQuiz : MonoBehaviour
         feedbackText.text = "Quiz completed! Score: " + score + "/" + questions.Length;
     }
 
-
 }
-
