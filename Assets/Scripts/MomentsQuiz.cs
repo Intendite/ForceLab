@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+using System.Collections;
 
 public class MomentsQuiz : MonoBehaviour
 {
@@ -8,7 +8,6 @@ public class MomentsQuiz : MonoBehaviour
     public TMPro.TMP_Text questionText;
     public Button[] answerButtons;
     public TMPro.TMP_Text feedbackText;
-    public GameObject momentsQuizUI;
     public static bool GameIsPaused = false;
 
     private string[] questions = {
@@ -58,7 +57,7 @@ public class MomentsQuiz : MonoBehaviour
         }
     }
 
-    public void QuizEnd()
+    private void QuizEnd()
     {
         QuizMenuUI.SetActive(false);
         Time.timeScale = 1f;
@@ -66,7 +65,7 @@ public class MomentsQuiz : MonoBehaviour
         Cursor.visible = false;
     }
 
-    void QuizTime()
+    private void QuizTime()
     {
         QuizMenuUI.SetActive(true);
         Time.timeScale = 0f;
@@ -76,8 +75,26 @@ public class MomentsQuiz : MonoBehaviour
 
     public void AnswerSelected(int answerIndex)
     {
-        userAnswers[currentQuestionIndex] = answerButtons[answerIndex].GetComponentInChildren<Text>().text;
+        string selectedAnswer = answerButtons[answerIndex].GetComponentInChildren<TMPro.TextMeshProUGUI>().text;
+
+        if (selectedAnswer == correctAnswers[currentQuestionIndex])
+        {
+            feedbackText.text = "Correct!";
+        }
+        else
+        {
+            feedbackText.text = "Wrong!";
+        }
+
+        StartCoroutine(NextQuestionWithDelay());
+    }
+
+    private IEnumerator NextQuestionWithDelay()
+    {
+        yield return new WaitForSeconds(1.5f); // Adjust the delay time as needed
+
         currentQuestionIndex++;
+        feedbackText.text = "";
 
         if (currentQuestionIndex < questions.Length)
         {
@@ -95,6 +112,10 @@ public class MomentsQuiz : MonoBehaviour
 
         for (int i = 0; i < answerButtons.Length; i++)
         {
+            int answerIndex = i; // Store the value of i for the lambda function
+            // answerButtons[i].onClick.RemoveAllListeners(); // Remove any existing listeners
+            // answerButtons[i].onClick.AddListener(() => AnswerSelected(answerIndex)); // Add the listener
+
             if (i == 0)
             {
                 answerButtons[i].GetComponentInChildren<TMPro.TextMeshProUGUI>().text = correctAnswers[index];
@@ -119,4 +140,7 @@ public class MomentsQuiz : MonoBehaviour
         }
         feedbackText.text = "Quiz completed! Score: " + score + "/" + questions.Length;
     }
+
+
 }
+

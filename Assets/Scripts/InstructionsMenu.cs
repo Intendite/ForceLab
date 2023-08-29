@@ -3,17 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class InstructionsMenu : MonoBehaviour
 {
-    public void playInstructions1()
+    public void playSim1()
     {
+        Cursor.visible = false;
         // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        SceneManager.LoadScene(1);
-    }
-
-    public void quitGame()
-    {
-        Debug.Log("QUIT");
-        Application.Quit();
+        SceneManager.LoadScene(2);
     }
 }
