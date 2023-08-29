@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Linq;
 
@@ -37,25 +38,16 @@ public class MomentsQuiz : MonoBehaviour
 
     private void Start()
     {
-        console.log("Showing quiz");
-
         userAnswers = new string[questions.Length];
         for (int i = 0; i < userAnswers.Length; i++)
         {
             userAnswers[i] = ""; // Initialize with empty string
         }
         ShowQuestion(currentQuestionIndex);
-        console.log("Questions Shown");
-    }
-
-    private void Update()
-    {
-        
     }
 
     public void AnswerSelected(int answerIndex)
     {
-        console.log("Answer clicked");
         string selectedAnswer = answerButtons[answerIndex].GetComponentInChildren<TMPro.TextMeshProUGUI>().text;
 
         userAnswers[currentQuestionIndex] = selectedAnswer; // Update userAnswers
@@ -74,7 +66,7 @@ public class MomentsQuiz : MonoBehaviour
 
     private IEnumerator NextQuestionWithDelay()
     {
-        yield return new WaitForSeconds(1.5f); // Adjust the delay time as needed
+        yield return new WaitForSeconds(1.0f); // Adjust the delay time as needed
 
         currentQuestionIndex++;
         feedbackText.text = "";
@@ -115,6 +107,15 @@ public class MomentsQuiz : MonoBehaviour
             }
         }
         feedbackText.text = "Quiz completed! Score: " + score + "/" + questions.Length;
+
+        // Load the main menu scene after a delay
+        StartCoroutine(LoadMainMenuWithDelay());
     }
 
+    private IEnumerator LoadMainMenuWithDelay()
+    {
+        yield return new WaitForSeconds(1.5f); // Delay before loading the main menu
+
+        SceneManager.LoadScene(0); // Load the main menu scene
+    }
 }
