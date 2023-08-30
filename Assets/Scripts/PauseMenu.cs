@@ -8,7 +8,8 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
-    public GameObject NotesMenuUI;
+    public GameObject NotesMenuUI1;
+    public GameObject NotesMenuUI2;
 
     // Update is called once per frame
     void Update()
@@ -64,7 +65,8 @@ public class PauseMenu : MonoBehaviour
 
     public void StopNotes()
     {
-        NotesMenuUI.SetActive(false);
+        NotesMenuUI1.SetActive(false);
+        NotesMenuUI2.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
         Cursor.visible = false;
@@ -72,7 +74,7 @@ public class PauseMenu : MonoBehaviour
 
     void LoadNotes()
     {
-        NotesMenuUI.SetActive(true);
+        NotesMenuUI1.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
         Cursor.visible = true;
