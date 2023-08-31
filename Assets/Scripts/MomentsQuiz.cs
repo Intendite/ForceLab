@@ -6,8 +6,8 @@ using System.Linq;
 
 public class MomentsQuiz : MonoBehaviour
 {
+    public Player player;
     public Console console;
-
     public TMPro.TMP_Text questionText;
     public Button[] answerButtons;
     public TMPro.TMP_Text feedbackText;
@@ -56,6 +56,7 @@ public class MomentsQuiz : MonoBehaviour
         {
             feedbackText.text = "Correct!";
         }
+
         else
         {
             feedbackText.text = "Wrong!";
@@ -75,6 +76,7 @@ public class MomentsQuiz : MonoBehaviour
         {
             ShowQuestion(currentQuestionIndex);
         }
+
         else
         {
             CalculateScore();
@@ -106,6 +108,7 @@ public class MomentsQuiz : MonoBehaviour
                 score++;
             }
         }
+
         feedbackText.text = "Quiz completed! Score: " + score + "/" + questions.Length;
 
         // Load the main menu scene after a delay
