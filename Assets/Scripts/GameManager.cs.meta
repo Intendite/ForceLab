@@ -3,7 +3,10 @@ guid: 53b3e57d7b1927a4e93257d64ffedf54
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - xpData: {fileID: 11400000, guid: b7a02e840d16f134eb1c22f9d055d6dc, type: 2}
+  - sliderXP: {instanceID: 0}
+  - levelText: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

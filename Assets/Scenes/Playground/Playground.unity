@@ -957,6 +957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 781584095}
+  XPBarUI: {fileID: 1846203412}
   NotesMenuUI1: {fileID: 1995798480}
   NotesMenuUI2: {fileID: 955519417}
 --- !u!1 &678259874
@@ -2002,7 +2003,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: LEVEL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9b4e3165b5793d64cbf75fe17eb882e1, type: 2}
   m_sharedMaterial: {fileID: 8332244179363958823, guid: 9b4e3165b5793d64cbf75fe17eb882e1, type: 2}
@@ -2029,7 +2030,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 68.25
+  m_fontSize: 25.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3679,6 +3680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b3e57d7b1927a4e93257d64ffedf54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xpData: {fileID: 11400000, guid: b7a02e840d16f134eb1c22f9d055d6dc, type: 2}
   sliderXP: {fileID: 1846203415}
   levelText: {fileID: 983177638}
 --- !u!114 &1846203415
@@ -4300,7 +4302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xpData: {fileID: 11400000, guid: b7a02e840d16f134eb1c22f9d055d6dc, type: 2}
-  xpBar: {fileID: 1846203414}
+  gameManager: {fileID: 0}
 --- !u!4 &2029075243
 Transform:
   m_ObjectHideFlags: 0

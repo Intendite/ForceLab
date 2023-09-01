@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class PickUpController : MonoBehaviour
@@ -10,7 +9,7 @@ public class PickUpController : MonoBehaviour
     private GameObject heldObj;
     private Rigidbody heldObjRB;
 
-    [Header("Physics Paramters")]
+    [Header("Physics Parameters")]
     [SerializeField] private float pickupRange = 5.0f;
     [SerializeField] private float pickupForce = 150.0f;
 
@@ -18,7 +17,7 @@ public class PickUpController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (heldObj == null) 
+            if (heldObj == null)
             {
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickupRange))
@@ -27,7 +26,6 @@ public class PickUpController : MonoBehaviour
                     PickupObject(hit.transform.gameObject);
                 }
             }
-
             else
             {
                 // Drop object
@@ -35,7 +33,7 @@ public class PickUpController : MonoBehaviour
             }
         }
 
-        if (heldObj != null) 
+        if (heldObj != null)
         {
             // Move object
             MoveObject();

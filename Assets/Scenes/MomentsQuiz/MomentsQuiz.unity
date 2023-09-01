@@ -834,7 +834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffddee2d96b3de247a9b6e75aa7668bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  gameManager: {fileID: 1324599349}
   console: {fileID: 1886333584}
   questionText: {fileID: 822142710}
   answerButtons:
@@ -2159,6 +2159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b3e57d7b1927a4e93257d64ffedf54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xpData: {fileID: 11400000, guid: b7a02e840d16f134eb1c22f9d055d6dc, type: 2}
   sliderXP: {fileID: 1324599350}
   levelText: {fileID: 1123972907}
 --- !u!114 &1324599350
@@ -2479,7 +2480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xpData: {fileID: 11400000, guid: b7a02e840d16f134eb1c22f9d055d6dc, type: 2}
-  xpBar: {fileID: 0}
+  gameManager: {fileID: 0}
 --- !u!4 &1692795037
 Transform:
   m_ObjectHideFlags: 0

@@ -1115,7 +1115,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &367410832
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4069,7 +4069,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1188342558
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4559,6 +4559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b3e57d7b1927a4e93257d64ffedf54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xpData: {fileID: 11400000, guid: b7a02e840d16f134eb1c22f9d055d6dc, type: 2}
   sliderXP: {fileID: 1329039963}
   levelText: {fileID: 1627793681}
 --- !u!114 &1329039963
@@ -4653,7 +4654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1377899848
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5404,7 +5405,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1627793679
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6423,7 +6424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1963248805
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6562,7 +6563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xpData: {fileID: 11400000, guid: b7a02e840d16f134eb1c22f9d055d6dc, type: 2}
-  xpBar: {fileID: 1329039962}
+  gameManager: {fileID: 0}
 --- !u!4 &2058075082
 Transform:
   m_ObjectHideFlags: 0

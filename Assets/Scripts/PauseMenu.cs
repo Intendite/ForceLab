@@ -8,10 +8,10 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
+    public GameObject XPBarUI;
     public GameObject NotesMenuUI1;
     public GameObject NotesMenuUI2;
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -20,7 +20,6 @@ public class PauseMenu : MonoBehaviour
             {
                 Resume();
             }
-
             else
             {
                 Pause();
@@ -33,7 +32,6 @@ public class PauseMenu : MonoBehaviour
             {
                 StopNotes();
             }
-
             else
             {
                 LoadNotes();
@@ -49,6 +47,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
+        XPBarUI.SetActive(true);
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
@@ -57,6 +56,7 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
+        XPBarUI.SetActive(false);
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
@@ -65,6 +65,7 @@ public class PauseMenu : MonoBehaviour
 
     public void StopNotes()
     {
+        XPBarUI.SetActive(true);
         NotesMenuUI1.SetActive(false);
         NotesMenuUI2.SetActive(false);
         Time.timeScale = 1f;
@@ -74,6 +75,7 @@ public class PauseMenu : MonoBehaviour
 
     void LoadNotes()
     {
+        XPBarUI.SetActive(false);
         NotesMenuUI1.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
@@ -92,4 +94,3 @@ public class PauseMenu : MonoBehaviour
         Application.Quit();
     }
 }
-

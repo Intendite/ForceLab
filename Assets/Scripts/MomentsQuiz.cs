@@ -6,11 +6,14 @@ using System.Linq;
 
 public class MomentsQuiz : MonoBehaviour
 {
-    public Player player;
+    public GameManager gameManager; // Reference to the GameManager script
     public Console console;
     public TMPro.TMP_Text questionText;
     public Button[] answerButtons;
     public TMPro.TMP_Text feedbackText;
+
+    private string[] userAnswers; // Store selected answers
+    private int currentQuestionIndex = 0;
 
     private string[] questions = {
         "What is the moment of a force?",
@@ -33,15 +36,13 @@ public class MomentsQuiz : MonoBehaviour
         /* Add more wrong answer arrays here */
     };
 
-    private string[] userAnswers; // Store selected answers
-    private int currentQuestionIndex = 0;
 
     private void Start()
     {
         userAnswers = new string[questions.Length];
         for (int i = 0; i < userAnswers.Length; i++)
         {
-            userAnswers[i] = ""; // Initialize with empty string
+            userAnswers[i] = ""; // Initialize with an empty string
         }
         ShowQuestion(currentQuestionIndex);
     }
@@ -54,9 +55,10 @@ public class MomentsQuiz : MonoBehaviour
 
         if (selectedAnswer == correctAnswers[currentQuestionIndex])
         {
+            gameManager.GainXP(2); // Gain 2 XP for a correct answer through GameManager
+            Debug.Log("Gained 2 XP");
             feedbackText.text = "Correct!";
         }
-
         else
         {
             feedbackText.text = "Wrong!";
@@ -76,7 +78,6 @@ public class MomentsQuiz : MonoBehaviour
         {
             ShowQuestion(currentQuestionIndex);
         }
-
         else
         {
             CalculateScore();
@@ -108,7 +109,6 @@ public class MomentsQuiz : MonoBehaviour
                 score++;
             }
         }
-
         feedbackText.text = "Quiz completed! Score: " + score + "/" + questions.Length;
 
         // Load the main menu scene after a delay

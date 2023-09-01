@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: XPData
   m_EditorClassIdentifier: 
   currentXP: 0
-  currentLevel: 0
+  currentLevel: 1

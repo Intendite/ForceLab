@@ -5,10 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public static Player Instance { get; private set; }
-
     public XPData xpData;
-    public XPBar xpBar;
+    public GameManager gameManager;
 
     private float timeElapsed = 0f;
 
@@ -17,20 +15,12 @@ public class Player : MonoBehaviour
         Debug.Log("Player Awake called in scene " + SceneManager.GetActiveScene().name);
         Debug.Log("XPData assigned: " + (xpData != null));
 
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // Retain the object across scenes
-        }
-        else
-        {
-            Debug.Log("Destroying duplicate Player object in scene " + SceneManager.GetActiveScene().name);
-            Destroy(gameObject); // Destroy duplicates
-        }
+        // You don't need to check for duplicate players, as the GameManager handles it.
+
+        // Assign the GameManager instance in the Inspector to the gameManager field.
+        gameManager = GameManager.Instance;
     }
 
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -55,11 +45,6 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (SceneManager.GetActiveScene().buildIndex == 3)
-        {
-            //if (momentsQuiz.)
-        }
-
         if (xpData.currentXP >= 10)
         {
             LevelUp();
@@ -68,16 +53,15 @@ public class Player : MonoBehaviour
 
     public void GainXP(int XP)
     {
-        Debug.Log("Gaining XP: " + XP);
         xpData.currentXP += XP;
-        xpBar.SetXP(xpData.currentXP);
+
+        // Update XP Bar through the GameManager
+        gameManager.GainXP(XP);
     }
 
     void LevelUp()
     {
-        Debug.Log("Leveling up");
         xpData.currentXP = 0;
         xpData.currentLevel += 1;
     }
-
 }
