@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
-
     public static AudioManager instance;
 
     void Awake()
@@ -47,11 +46,6 @@ public class AudioManager : MonoBehaviour
         {
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
-        }
-
-        if (PauseMenu.GameIsPaused) 
-        {
-            s.source.pitch *= .5f;
         }
 
         s.source.Play();

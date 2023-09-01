@@ -66,3 +66,4 @@ MonoBehaviour:
     loop: 0
     AudioGroup: {fileID: 3336444437388560890, guid: 8275be9d6bc60684386f84a5747af6a7, type: 2}
     source: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 8275be9d6bc60684386f84a5747af6a7, type: 2}
