@@ -36,7 +36,6 @@ public class MomentsQuiz : MonoBehaviour
         /* Add more wrong answer arrays here */
     };
 
-
     private void Start()
     {
         userAnswers = new string[questions.Length];

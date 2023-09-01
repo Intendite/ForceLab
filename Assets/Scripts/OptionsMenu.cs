@@ -46,7 +46,7 @@ public class OptionsMenu : MonoBehaviour
 
     public void setVolume(float volume)
     {
-        audioMixer.SetFloat("volume", volume);
+        audioMixer.SetFloat("MasterVolume", volume);
     }
 
     public void setQuality(int qualityIndex)
