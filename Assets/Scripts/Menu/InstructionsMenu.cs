@@ -10,4 +10,10 @@ public class InstructionsMenu : MonoBehaviour
         Cursor.visible = false;
         SceneManager.LoadScene(2);
     }
+
+    public void playSim2()
+    {
+        Cursor.visible = false;
+        SceneManager.LoadScene(5);
+    }
 }
