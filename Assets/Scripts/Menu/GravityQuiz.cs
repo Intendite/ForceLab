@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Linq;
 
-public class MomentsQuiz : MonoBehaviour
+public class GravityQuiz : MonoBehaviour
 {
     public GameManager gameManager; // Reference to the GameManager script
     public Console console;
@@ -16,38 +16,44 @@ public class MomentsQuiz : MonoBehaviour
     private int currentQuestionIndex = 0;
 
     private string[] questions = {
-        "Principle of Moments?",
-        "Moment of a force?",
-        "Units to measure Moment?",
-        "How does Stability relate?",
-        "Center of Gravity?",
-        "Stable Equilibrium?",
-        "Unstable Equilibrium?",
-        "Neutral Equilibrium?"
+        "What is the SI unit for mass?",
+        "What is the SI unit for weight?",
+        "What is mass?",
+        "What is weight?",
+        "Is mass constant?",
+        "Is weight constant?",
+        "What is a gravitational field?",
+        "Define gravitational field strength.",
+        "What is density?",
+        "What are the units of density?"
         /* Add more questions here */
     };
 
     private string[] correctAnswers = {
-        "Sum of clockwise and anticlockwise moments equals at equilibrium.",
-        "Force's product and perpendicular distance to pivot.",
-        "Measured in Newton-meter (Nm).",
-        "Related by lowering center of gravity, increasing base area.",
-        "Point where weight acts.",
-        "Center raised when displaced but stays in base area.",
-        "Center raised when displaced, falls outside base area.",
-        "Center remains same level, line passes pivot."
+        "kilogram (kg)",
+        "newton (N)",
+        "The amount of substance in a body.",
+        "The gravitational force acting on an object due to the gravitational field.",
+        "Yes, mass is constant.",
+        "No, weight is not constant.",
+        "A region of space where a body with mass experiences gravitational force due to gravitational attraction.",
+        "Gravitational force per unit mass.",
+        "Mass per unit volume.",
+        "kilogram per cubic meter (kg/m³)"
         /* Add more correct answers here */
     };
 
     private string[][] wrongAnswers = {
-        new string[] { "Sum of forces is zero.", "Product of distance and time.", "Measured in Joules (J)." },
-        new string[] { "Same as weight.", "Result of adding two forces.", "Measured in kilograms (kg)." },
-        new string[] { "Measured in meters (m).", "Measured in kilogram-meter (kgm).", "Measured in kilogram-meter per second (kgm/s)." },
-        new string[] { "No relation to Moments.", "Related by increasing center of gravity.", "Related by decreasing base area." },
-        new string[] { "Same as centroid.", "Point through which weight disappears.", "Always at the top." },
-        new string[] { "Center lowered when displaced.", "Center raised but stays in base area.", "No specific conditions." },
-        new string[] { "Same as neutral equilibrium.", "No relation to Moments.", "Center lowered when displaced." },
-        new string[] { "Same as stable equilibrium.", "No specific conditions.", "Center remains same level, line passes pivot." }
+        new string[] { "gram (g)", "meter (m)", "Density." },
+        new string[] { "kilogram per cubic meter (kg/m³)", "meter per second squared (m/s²)", "The amount of matter in an object." },
+        new string[] { "The gravitational force acting on an object.", "The force applied to lift an object.", "The volume of an object." },
+        new string[] { "The amount of substance in a body.", "The force applied to lift an object.", "The volume of an object." },
+        new string[] { "Yes, mass changes with location.", "Yes, mass changes with time.", "No, mass is constant." },
+        new string[] { "Yes, weight is always the same.", "No, weight changes with location.", "No, weight is constant." },
+        new string[] { "A region of space where there is no gravity.", "A region of space where electromagnetic fields exist.", "A region of space where light travels faster." },
+        new string[] { "The force of gravity on an object.", "The force of air resistance on an object.", "The amount of mass in a region." },
+        new string[] { "The amount of matter in a body.", "The gravitational force acting on an object.", "The mass per unit length." },
+        new string[] { "newton per cubic meter (N/m³)", "gram per milliliter (g/mL)", "kilogram per liter (kg/L)" }
         /* Add more wrong answer arrays here */
     };
 

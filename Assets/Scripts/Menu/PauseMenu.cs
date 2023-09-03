@@ -38,9 +38,16 @@ public class PauseMenu : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
+
+        if (SceneManager.GetActiveScene().buildIndex == 2 && Input.GetKeyDown(KeyCode.Q))
         {
             SceneManager.LoadScene(3);
+            Cursor.visible = true;
+        }
+
+        if (SceneManager.GetActiveScene().buildIndex == 5 && Input.GetKeyDown(KeyCode.Q))
+        {
+            SceneManager.LoadScene(6);
             Cursor.visible = true;
         }
     }

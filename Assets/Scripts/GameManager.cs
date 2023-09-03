@@ -38,11 +38,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        // Input handling
+        /*// Input handling
         if (Input.GetKeyDown(KeyCode.Space))
         {
             GainXP(1);
-        }
+        }*/
 
         // Update XP Bar
         sliderXP.value = xpData.currentXP;
@@ -53,6 +53,20 @@ public class GameManager : MonoBehaviour
 
         // Check to see if the Scene is in the Playground Scene
         if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            // Check if 5 seconds have passed
+            if (timeElapsed >= 5f)
+            {
+                // Increment XP by 1
+                GainXP(1);
+
+                // Reset timeElapsed for the next interval
+                timeElapsed -= 5f;
+            }
+        }
+
+        // Check to see if the Scene is in the Playground Scene
+        if (SceneManager.GetActiveScene().buildIndex == 5)
         {
             // Check if 5 seconds have passed
             if (timeElapsed >= 5f)

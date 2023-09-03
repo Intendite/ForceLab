@@ -24,12 +24,14 @@ public class PickUpController : MonoBehaviour
                 {
                     // Picked up object
                     PickupObject(hit.transform.gameObject);
+                    FindObjectOfType<AudioManager>().Play("PickUp/Drop");
                 }
             }
             else
             {
                 // Drop object
                 DropObject();
+                FindObjectOfType<AudioManager>().Play("PickUp/Drop");
             }
         }
 
