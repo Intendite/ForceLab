@@ -1636,13 +1636,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Q: Challenge yourself with the Moments Quiz.
+  m_text: 'Shift: Hold down the "Shift" key to sprint.
 
-    N: Access your Notes
-    whenever you need a quick reference.
+    Q: Challenge yourself
+    with the Moments Quiz.
 
-    Left Mouse Click: Click the left mouse
-    button to pick up items in the simulation.'
+    N: Access your Notes whenever you need a quick reference.
+
+    Left
+    Mouse Click: Click the left mouse button to pick up items in the simulation.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9b4e3165b5793d64cbf75fe17eb882e1, type: 2}
   m_sharedMaterial: {fileID: 8332244179363958823, guid: 9b4e3165b5793d64cbf75fe17eb882e1, type: 2}

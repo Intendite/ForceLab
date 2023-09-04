@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu/Menu.unity
+    path: Assets/Scenes/Menu/Menu.unity
     guid: 18d5f291b4c8ae741a58a858811ba5bd
   - enabled: 1
-    path: Assets/Scenes/InstructionsMenu/InstructionsPlayground.unity
+    path: Assets/Scenes/Menu/InstructionsPlayground.unity
     guid: 7c3987b1c8872b14d9637ab4c5e8208b
   - enabled: 1
     path: Assets/Scenes/Playground/Playground.unity
@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Playground/MomentsQuiz.unity
     guid: 4d43e2f39dd92de449a71f114ed78ce9
   - enabled: 1
-    path: Assets/Scenes/InstructionsMenu/InstructionsGravity.unity
+    path: Assets/Scenes/Menu/InstructionsGravity.unity
     guid: b464f4ecd8e9819468accfe2d0cb175a
   - enabled: 1
     path: Assets/Scenes/Gravity/Gravity.unity

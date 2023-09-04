@@ -1011,15 +1011,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'In this interactive learning environment, you''ll discover the fascinating
-    world of moments and forces. As you explore and interact with the simulation,
-    you''ll earn experience points (XP). Additionally, when you answer quiz questions
-    correctly, you''ll also earn points. The more you explore and learn, the more
-    XP you''ll accumulate!
+  m_text: 'In this interactive simulation, you are about to embark on a journey into
+    the fascinating world of gravity, mass, and weight. As you explore and interact
+    with the simulation, you''ll earn experience points (XP). Additionally, when
+    you answer quiz questions correctly, you''ll also earn points. The more you explore
+    and learn, the more XP you''ll accumulate!
 
 
-    Before you dive in, let''s get you acquainted with
-    the controls:'
+    Before you dive in, let''s get
+    you acquainted with the controls:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9b4e3165b5793d64cbf75fe17eb882e1, type: 2}
   m_sharedMaterial: {fileID: 8332244179363958823, guid: 9b4e3165b5793d64cbf75fe17eb882e1, type: 2}
@@ -1636,13 +1636,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Q: Challenge yourself with the Mass and Weight Quiz.
+  m_text: 'Shift: Hold down the "Shift" key to sprint.
 
-    N: Access your
-    Notes whenever you need a quick reference.
+    Q: Challenge yourself
+    with the Mass and Weight Quiz.
 
-    Left Mouse Click: Click the left
-    mouse button to pick up items in the simulation.'
+    N: Access your Notes whenever you need a
+    quick reference.
+
+    Left Mouse Click: Click the left mouse button to pick up
+    items in the simulation.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9b4e3165b5793d64cbf75fe17eb882e1, type: 2}
   m_sharedMaterial: {fileID: 8332244179363958823, guid: 9b4e3165b5793d64cbf75fe17eb882e1, type: 2}

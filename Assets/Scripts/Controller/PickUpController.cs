@@ -24,14 +24,14 @@ public class PickUpController : MonoBehaviour
                 {
                     // Picked up object
                     PickupObject(hit.transform.gameObject);
-                    FindObjectOfType<AudioManager>().Play("PickUp/Drop");
+                    
                 }
             }
             else
             {
                 // Drop object
                 DropObject();
-                FindObjectOfType<AudioManager>().Play("PickUp/Drop");
+                
             }
         }
 
@@ -62,6 +62,7 @@ public class PickUpController : MonoBehaviour
 
             heldObjRB.transform.parent = holdArea;
             heldObj = pickObj;
+            FindObjectOfType<AudioManager>().Play("PickUp/Drop");
         }
     }
 
@@ -73,5 +74,6 @@ public class PickUpController : MonoBehaviour
 
         heldObj.transform.parent = null;
         heldObj = null;
+        FindObjectOfType<AudioManager>().Play("PickUp/Drop");
     }
 }
