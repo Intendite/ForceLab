@@ -1254,9 +1254,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1528912429}
-        m_TargetAssemblyTypeName: InstructionsMenu, Assembly-CSharp
-        m_MethodName: playSim1
+      - m_Target: {fileID: 533723458}
+        m_TargetAssemblyTypeName: ButtonClicked, Assembly-CSharp
+        m_MethodName: PlayButtonClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1264,7 +1264,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1528912427}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
@@ -1278,9 +1278,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 533723458}
-        m_TargetAssemblyTypeName: ButtonClicked, Assembly-CSharp
-        m_MethodName: PlayButtonClickSound
+      - m_Target: {fileID: 1528912429}
+        m_TargetAssemblyTypeName: InstructionsMenu, Assembly-CSharp
+        m_MethodName: PlaySim1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1288,7 +1288,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1343025754
 MonoBehaviour:

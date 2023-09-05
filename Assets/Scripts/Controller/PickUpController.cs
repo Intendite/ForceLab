@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PickUpController : MonoBehaviour
 {
     [Header("PickUp Settings")]
-    [SerializeField] Transform holdArea;
+    [SerializeField] private Transform holdArea;
     private GameObject heldObj;
     private Rigidbody heldObjRB;
 
@@ -15,65 +13,83 @@ public class PickUpController : MonoBehaviour
 
     private void Update()
     {
+        // Check for left mouse button click
         if (Input.GetMouseButtonDown(0))
         {
             if (heldObj == null)
             {
-                RaycastHit hit;
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickupRange))
-                {
-                    // Picked up object
-                    PickupObject(hit.transform.gameObject);
-                    
-                }
+                TryPickupObject();
             }
             else
             {
-                // Drop object
                 DropObject();
-                
             }
         }
 
         if (heldObj != null)
         {
-            // Move object
             MoveObject();
         }
     }
 
-    void MoveObject()
+    private void TryPickupObject()
     {
-        if (Vector3.Distance(heldObj.transform.position, holdArea.position) > 0.1f)
+        RaycastHit hit;
+
+        // Cast a ray from the camera forward to detect objects within pickupRange
+        if (Physics.Raycast(transform.position, transform.forward, out hit, pickupRange))
         {
-            Vector3 moveDirection = holdArea.position - heldObj.transform.position;
-            heldObjRB.AddForce(moveDirection * pickupForce);
+            GameObject hitObject = hit.transform.gameObject;
+
+            // Check if the hit object has a Rigidbody and is tagged as "Interactive"
+            if (hitObject.GetComponent<Rigidbody>() && hitObject.CompareTag("Interactive"))
+            {
+                PickupObject(hitObject);
+            }
         }
     }
 
-    void PickupObject(GameObject pickObj)
+    private void MoveObject()
     {
-        if (pickObj.GetComponent<Rigidbody>() && pickObj.tag == "Interactive")
-        {
-            heldObjRB = pickObj.GetComponent<Rigidbody>();
-            heldObjRB.useGravity = false;
-            heldObjRB.drag = 10;
-            heldObjRB.constraints = RigidbodyConstraints.FreezeRotation;
+        // Calculate the move direction
+        Vector3 moveDirection = holdArea.position - heldObj.transform.position;
 
-            heldObjRB.transform.parent = holdArea;
-            heldObj = pickObj;
-            FindObjectOfType<AudioManager>().Play("PickUp/Drop");
-        }
+        // Apply force to move the object towards the holdArea
+        heldObjRB.AddForce(moveDirection * pickupForce);
     }
 
-    void DropObject()
+    private void PickupObject(GameObject pickedObject)
     {
+        // Get the Rigidbody component and set physics properties
+        heldObjRB = pickedObject.GetComponent<Rigidbody>();
+        heldObjRB.useGravity = false;
+        heldObjRB.drag = 10;
+        heldObjRB.constraints = RigidbodyConstraints.FreezeRotation;
+
+        // Set the picked object as a child of the holdArea
+        pickedObject.transform.parent = holdArea;
+
+        // Store the picked object
+        heldObj = pickedObject;
+
+        // Play a pickup sound
+        FindObjectOfType<AudioManager>().Play("PickUp/Drop");
+    }
+
+    private void DropObject()
+    {
+        // Restore the physics properties of the held object
         heldObjRB.useGravity = true;
         heldObjRB.drag = 1;
         heldObjRB.constraints = RigidbodyConstraints.None;
 
+        // Remove the object from the holdArea parent
         heldObj.transform.parent = null;
+
+        // Clear the held object reference
         heldObj = null;
+
+        // Play a drop sound
         FindObjectOfType<AudioManager>().Play("PickUp/Drop");
     }
 }

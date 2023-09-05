@@ -5,15 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class InstructionsMenu : MonoBehaviour
 {
-    public void playSim1()
+    // Public methods to load different scenes
+    public void PlaySim1()
     {
-        Cursor.visible = false;
-        SceneManager.LoadScene(2);
+        HideCursor();
+        LoadScene(2);
     }
 
-    public void playSim2()
+    public void PlaySim2()
+    {
+        HideCursor();
+        LoadScene(5);
+    }
+
+    // Private method to load scenes
+    private void LoadScene(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
+    }
+
+    // Private method to hide the cursor
+    private void HideCursor()
     {
         Cursor.visible = false;
-        SceneManager.LoadScene(5);
     }
 }

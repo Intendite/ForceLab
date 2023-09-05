@@ -6,13 +6,15 @@ using System.Linq;
 
 public class MomentsQuiz : MonoBehaviour
 {
-    public GameManager gameManager; // Reference to the GameManager script
+    // References to GameManager and UI elements
+    public GameManager gameManager;
     public Console console;
     public TMPro.TMP_Text questionText;
     public Button[] answerButtons;
     public TMPro.TMP_Text feedbackText;
 
-    private string[] userAnswers; // Store selected answers
+    // Arrays to store questions and answers
+    private string[] userAnswers;
     private int currentQuestionIndex = 0;
 
     private string[] questions = {
@@ -55,11 +57,10 @@ public class MomentsQuiz : MonoBehaviour
 
     private void Start()
     {
-        userAnswers = new string[questions.Length];
-        for (int i = 0; i < userAnswers.Length; i++)
-        {
-            userAnswers[i] = ""; // Initialize with an empty string
-        }
+        // Initialize userAnswers array with empty strings
+        userAnswers = new string[questions.Length].Select(x => "").ToArray();
+
+        // Display the first question
         ShowQuestion(currentQuestionIndex);
     }
 
@@ -74,9 +75,10 @@ public class MomentsQuiz : MonoBehaviour
 
         userAnswers[currentQuestionIndex] = selectedAnswer;
 
-        for (int i = 0; i < answerButtons.Length; i++)
+        // Disable answer buttons after selection
+        foreach (var button in answerButtons)
         {
-            answerButtons[i].interactable = false;
+            button.interactable = false;
         }
 
         if (selectedAnswer == correctAnswers[currentQuestionIndex])
@@ -90,6 +92,7 @@ public class MomentsQuiz : MonoBehaviour
             feedbackText.text = "Wrong!";
         }
 
+        // Move to the next question after a delay
         StartCoroutine(NextQuestionWithDelay());
 
         questionAnswered = true;
@@ -114,13 +117,15 @@ public class MomentsQuiz : MonoBehaviour
 
     private void ShowQuestion(int index)
     {
-        for (int i = 0; i < answerButtons.Length; i++)
+        // Enable answer buttons
+        foreach (var button in answerButtons)
         {
-            answerButtons[i].interactable = true;
+            button.interactable = true;
         }
 
         questionText.text = questions[index];
 
+        // Shuffle answers to display in random order
         string[] allAnswers = wrongAnswers[index].Concat(new string[] { correctAnswers[index] }).ToArray();
         allAnswers = allAnswers.OrderBy(a => Random.value).ToArray();
 
@@ -146,6 +151,7 @@ public class MomentsQuiz : MonoBehaviour
         }
         feedbackText.text = "Quiz completed! Score: " + score + "/" + questions.Length;
 
+        // Load the main menu scene after a delay
         StartCoroutine(LoadMainMenuWithDelay());
     }
 

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -37,7 +35,6 @@ public class PauseMenu : MonoBehaviour
                 LoadNotes();
             }
         }
-
 
         if (SceneManager.GetActiveScene().buildIndex == 2 && Input.GetKeyDown(KeyCode.Q))
         {

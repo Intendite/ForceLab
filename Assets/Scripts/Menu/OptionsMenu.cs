@@ -1,33 +1,31 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using TMPro;
 
 public class OptionsMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
+    public TMP_Dropdown resolutionDropdown;
 
-    public TMPro.TMP_Dropdown resolutionDropdown;
-
-    Resolution[] resolutions;
+    private Resolution[] resolutions;
 
     void Start()
     {
         resolutions = Screen.resolutions;
-
         resolutionDropdown.ClearOptions();
 
         List<string> options = new List<string>();
-
         int currentResolutionIndex = 0;
 
         for (int i = 0; i < resolutions.Length; i++)
         {
-            string option = resolutions[i].width + " x " + resolutions[i].height + " @ " + resolutions[i].refreshRateRatio + "hz";
+            // Create a formatted string for the resolution
+            string option = $"{resolutions[i].width} x {resolutions[i].height} @ {resolutions[i].refreshRateRatio}hz";
             options.Add(option);
 
-            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+            if (IsCurrentResolution(resolutions[i]))
             {
                 currentResolutionIndex = i;
             }
@@ -38,18 +36,18 @@ public class OptionsMenu : MonoBehaviour
         resolutionDropdown.RefreshShownValue();
     }
 
-    public void setResolution(int resolutionIndex)
+    public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
-    public void setVolume(float volume)
+    public void SetVolume(float volume)
     {
         audioMixer.SetFloat("MasterVolume", volume);
     }
 
-    public void setQuality(int qualityIndex)
+    public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
     }
@@ -57,5 +55,10 @@ public class OptionsMenu : MonoBehaviour
     public void setFullScreen(bool isFullScreen)
     {
         Screen.fullScreen = isFullScreen;
+    }
+
+    private bool IsCurrentResolution(Resolution resolution)
+    {
+        return resolution.width == Screen.currentResolution.width && resolution.height == Screen.currentResolution.height;
     }
 }

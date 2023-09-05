@@ -6,13 +6,12 @@ using System.Linq;
 
 public class GravityQuiz : MonoBehaviour
 {
-    public GameManager gameManager; // Reference to the GameManager script
-    public Console console;
+    public GameManager gameManager;
     public TMPro.TMP_Text questionText;
     public Button[] answerButtons;
     public TMPro.TMP_Text feedbackText;
 
-    private string[] userAnswers; // Store selected answers
+    private string[] userAnswers;
     private int currentQuestionIndex = 0;
 
     private string[] questions = {
@@ -61,11 +60,7 @@ public class GravityQuiz : MonoBehaviour
 
     private void Start()
     {
-        userAnswers = new string[questions.Length];
-        for (int i = 0; i < userAnswers.Length; i++)
-        {
-            userAnswers[i] = ""; // Initialize with an empty string
-        }
+        userAnswers = new string[questions.Length].Select(x => "").ToArray();
         ShowQuestion(currentQuestionIndex);
     }
 
@@ -80,9 +75,9 @@ public class GravityQuiz : MonoBehaviour
 
         userAnswers[currentQuestionIndex] = selectedAnswer;
 
-        for (int i = 0; i < answerButtons.Length; i++)
+        foreach (var button in answerButtons)
         {
-            answerButtons[i].interactable = false;
+            button.interactable = false;
         }
 
         if (selectedAnswer == correctAnswers[currentQuestionIndex])
