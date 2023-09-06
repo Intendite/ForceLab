@@ -66,6 +66,9 @@ public class PickUpController : MonoBehaviour
         heldObjRB.drag = 10;
         heldObjRB.constraints = RigidbodyConstraints.FreezeRotation;
 
+        // **Set the velocity of the rigidbody to zero**
+        heldObjRB.velocity = Vector3.zero;
+
         // Set the picked object as a child of the holdArea
         pickedObject.transform.parent = holdArea;
 
@@ -75,6 +78,7 @@ public class PickUpController : MonoBehaviour
         // Play a pickup sound
         FindObjectOfType<AudioManager>().Play("PickUp/Drop");
     }
+
 
     private void DropObject()
     {
