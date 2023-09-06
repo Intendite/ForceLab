@@ -8,8 +8,6 @@ public class Billboard : MonoBehaviour
     private Rigidbody boxRigidbody;
     private Vector3 initialOffset;
 
-    public float distanceAboveBox = 0.5f;
-
     void Start()
     {
         // Get the main camera's transform
@@ -49,7 +47,7 @@ public class Billboard : MonoBehaviour
             massText.text = Mathf.Round(boxRigidbody.mass) + " Kg";
 
             // Calculate the desired position above the 'box'
-            Vector3 desiredPosition = boxRigidbody.transform.position + initialOffset.normalized * distanceAboveBox;
+            Vector3 desiredPosition = boxRigidbody.transform.position + initialOffset.normalized;
 
             // Set the position of the mass text
             massText.transform.position = desiredPosition;

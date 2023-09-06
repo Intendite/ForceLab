@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public XPData xpData;
     public Slider sliderXP;
     public TMP_Text levelText;
-
+    public Transform playerTransform;
     public Rigidbody boxRigidbody;
 
     public TMP_Text velocityText; // Reference to the TextMeshPro Text for velocity
@@ -18,9 +18,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text massText;  // Reference to the TextMeshPro Text for mass
 
     private float timeElapsed = 0f;
-    private Transform playerTransform;
     private Vector3 playerStartPosition;
-
     private bool increaseMassKeyPressed = false;
     private bool decreaseMassKeyPressed = false;
 
@@ -42,11 +40,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 5)
-        {
-            playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        }
-
         if (playerTransform != null)
         {
             playerStartPosition = playerTransform.position;
@@ -59,6 +52,12 @@ public class GameManager : MonoBehaviour
     {
         sliderXP.value = xpData.currentXP;
         levelText.text = xpData.currentLevel.ToString();
+
+        // Check XP and level up
+        if (xpData.currentXP >= 10)
+        {
+            LevelUp();
+        }
 
         // Check if we are in Scene 2 or Scene 5
         if (SceneManager.GetActiveScene().buildIndex == 2 || SceneManager.GetActiveScene().buildIndex == 5)
@@ -165,11 +164,7 @@ public class GameManager : MonoBehaviour
                 UpdateGravityText();
             }
 
-            // Check XP and level up
-            if (xpData.currentXP >= 10)
-            {
-                LevelUp();
-            }
+            
         }
     }
 

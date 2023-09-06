@@ -3,15 +3,16 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Linq;
+using TMPro;
 
 public class MomentsQuiz : MonoBehaviour
 {
     // References to GameManager and UI elements
     public GameManager gameManager;
     public Console console;
-    public TMPro.TMP_Text questionText;
+    public TMP_Text questionText;
     public Button[] answerButtons;
-    public TMPro.TMP_Text feedbackText;
+    public TMP_Text feedbackText;
 
     // Arrays to store questions and answers
     private string[] userAnswers;

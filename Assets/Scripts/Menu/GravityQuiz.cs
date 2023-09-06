@@ -3,14 +3,18 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Linq;
+using TMPro;
 
 public class GravityQuiz : MonoBehaviour
 {
+    // References to GameManager and UI elements
     public GameManager gameManager;
-    public TMPro.TMP_Text questionText;
+    public Console console;
+    public TMP_Text questionText;
     public Button[] answerButtons;
-    public TMPro.TMP_Text feedbackText;
+    public TMP_Text feedbackText;
 
+    // Arrays to store questions and answers
     private string[] userAnswers;
     private int currentQuestionIndex = 0;
 
@@ -60,7 +64,10 @@ public class GravityQuiz : MonoBehaviour
 
     private void Start()
     {
+        // Initialize userAnswers array with empty strings
         userAnswers = new string[questions.Length].Select(x => "").ToArray();
+
+        // Display the first question
         ShowQuestion(currentQuestionIndex);
     }
 
@@ -75,6 +82,7 @@ public class GravityQuiz : MonoBehaviour
 
         userAnswers[currentQuestionIndex] = selectedAnswer;
 
+        // Disable answer buttons after selection
         foreach (var button in answerButtons)
         {
             button.interactable = false;
@@ -91,6 +99,7 @@ public class GravityQuiz : MonoBehaviour
             feedbackText.text = "Wrong!";
         }
 
+        // Move to the next question after a delay
         StartCoroutine(NextQuestionWithDelay());
 
         questionAnswered = true;
@@ -115,13 +124,15 @@ public class GravityQuiz : MonoBehaviour
 
     private void ShowQuestion(int index)
     {
-        for (int i = 0; i < answerButtons.Length; i++)
+        // Enable answer buttons
+        foreach (var button in answerButtons)
         {
-            answerButtons[i].interactable = true;
+            button.interactable = true;
         }
 
         questionText.text = questions[index];
 
+        // Shuffle answers to display in random order
         string[] allAnswers = wrongAnswers[index].Concat(new string[] { correctAnswers[index] }).ToArray();
         allAnswers = allAnswers.OrderBy(a => Random.value).ToArray();
 
@@ -147,6 +158,7 @@ public class GravityQuiz : MonoBehaviour
         }
         feedbackText.text = "Quiz completed! Score: " + score + "/" + questions.Length;
 
+        // Load the main menu scene after a delay
         StartCoroutine(LoadMainMenuWithDelay());
     }
 
